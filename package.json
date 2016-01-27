@@ -1,0 +1,28 @@
+{
+  "name": "Issue-Tracker",
+  "version": "0.1.1",
+  "description": "Issue tracker for github repositories",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "dependencies": {
+    "express": "4.13.3",
+    "async" : "1.5.2",
+    "request" : "2.69.0",
+    "moment" : "2.11.1"
+  },
+  "engines": {
+    "node": "5.3.0",
+    "npm": "3.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jatindogra/Issue-Tracker"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ]
+}
