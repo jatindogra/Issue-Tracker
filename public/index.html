@@ -10,10 +10,43 @@
 </head>
 <body>
   <div class="container" ng-controller="appCtrl">
-    <h1>GitHub Issue Tracker</h1>
-    <input ng-model="test">
-    {{test}}
-    {{greeting}}
+    <h1 class="text-center">GitHub Issue Tracker</h1>
+    <div class="row" style="margin-top:2%">
+      <div class = "col-md-10">
+        <input type="text" ng-model="repoUrl" class="form-control" placeholder="Input public github repository url">
+      </div>
+      <div class = "col-md-2">
+        <button type="button" class="btn btn-default" ng-click="getIssues()">Track Issues</button>
+      </div>
+    </div>
+    <div class="row" style="margin-top:2%">
+      <div class = "col-md-6 col-md-offset-3">
+        <table class="table table-bordered">
+          <tr>
+            <thead>
+              <th>Timeline</th>
+              <th>Number of Issues</th>
+            </thead>
+          </tr>
+          <tr>
+              <td>Overall</td>
+              <td>{{countOfIssues}}</td>
+          </tr>
+          <tr>
+              <td>Last 24 hours</td>
+              <td>{{countOfIssuesInLastDay}}</td>
+          </tr>
+          <tr>
+              <td>More than 24 hours ago but less than 7 days ago</td>
+              <td>{{countOfIssuesInBetween}}</td>
+          </tr>
+          <tr>
+              <td>More than 7 days ago </td>
+              <td>{{countOfIssuesOld}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
   <script src="controllers/appController.js"></script>
