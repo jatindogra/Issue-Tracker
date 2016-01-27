@@ -32,10 +32,10 @@ module.exports = function(router, request, async, config) {
                     }else if(moment(issueDate).isBefore(timePast7days)){
                       countOfIssuesOld = countOfIssuesOld + 1;
                     }
-                    issuesArray['countOfIssues'] = countOfIssues;
-                    issuesArray['countOfIssuesInLastDay'] = countOfIssuesInLastDay;
-                    issuesArray['countOfIssuesInBetween'] = countOfIssuesInBetween;
-                    issuesArray['countOfIssuesOld'] = countOfIssuesOld;
+                    issuesObject['countOfIssues'] = countOfIssues;
+                    issuesObject['countOfIssuesInLastDay'] = countOfIssuesInLastDay;
+                    issuesObject['countOfIssuesInBetween'] = countOfIssuesInBetween;
+                    issuesObject['countOfIssuesOld'] = countOfIssuesOld;
                   }
                   if(body.length < 30) {
                       res.send(issuesObject);
