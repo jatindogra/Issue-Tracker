@@ -24,6 +24,8 @@ server running
 
 ```
 
+The web-app is also deployed at https://young-peak-65899.herokuapp.com
+
 About
 ----------
 
