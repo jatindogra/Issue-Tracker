@@ -1,0 +1,6 @@
+{
+  "name": "Issue-Tracker",
+  "description": "Tool to track issues for github repositories",
+  "repository": "https://github.com/jatindogra/Issue-Tracker",
+  "keywords": ["node", "express", "static"]
+}
