@@ -23,19 +23,21 @@ module.exports = function(router, request, async, config) {
         }, function(error, response, body) {
               if(!error && response.statusCode === 200) {
                   for(var issueIndex = 0; issueIndex < body.length; issueIndex++) {
-                    countOfIssues = countOfIssues + 1;
-                    var issueDate = body[issueIndex].created_at;
-                    if(moment(issueDate).isAfter(timePast24Hours)){
-                      countOfIssuesInLastDay = countOfIssuesInLastDay + 1;
-                    }else if(moment(issueDate).isBetween(timePast7days, timePast24Hours)){
-                      countOfIssuesInBetween = countOfIssuesInBetween + 1;
-                    }else if(moment(issueDate).isBefore(timePast7days)){
-                      countOfIssuesOld = countOfIssuesOld + 1;
+                    if(!body[issueIndex].pull_request) {
+                      countOfIssues = countOfIssues + 1;
+                      var issueDate = body[issueIndex].created_at;
+                      if(moment(issueDate).isAfter(timePast24Hours)){
+                        countOfIssuesInLastDay = countOfIssuesInLastDay + 1;
+                      }else if(moment(issueDate).isBetween(timePast7days, timePast24Hours)){
+                        countOfIssuesInBetween = countOfIssuesInBetween + 1;
+                      }else if(moment(issueDate).isBefore(timePast7days)){
+                        countOfIssuesOld = countOfIssuesOld + 1;
+                      }
+                      issuesObject['countOfIssues'] = countOfIssues;
+                      issuesObject['countOfIssuesInLastDay'] = countOfIssuesInLastDay;
+                      issuesObject['countOfIssuesInBetween'] = countOfIssuesInBetween;
+                      issuesObject['countOfIssuesOld'] = countOfIssuesOld;
                     }
-                    issuesObject['countOfIssues'] = countOfIssues;
-                    issuesObject['countOfIssuesInLastDay'] = countOfIssuesInLastDay;
-                    issuesObject['countOfIssuesInBetween'] = countOfIssuesInBetween;
-                    issuesObject['countOfIssuesOld'] = countOfIssuesOld;
                   }
                   if(body.length < 30) {
                       res.send(issuesObject);
